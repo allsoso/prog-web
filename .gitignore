@@ -1,5 +1,5 @@
 # Environment variables
-.env
+src/.env
 
 # Python cache
 __pycache__/
