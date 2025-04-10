@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'express'
 import { atualizarAluno, criarAluno, deletarAluno, listarAlunos, visualizarAluno } from './aluno/controller.js';
 import { atualizarCurso, criarCurso, deletarCurso, listarCursos, visualizarCurso } from './curso/controller.js';
 

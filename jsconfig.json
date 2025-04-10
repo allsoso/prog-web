@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ES6",
+    "checkJs": true // Ativa a verificação de erros de JavaScript
+  },
+  "include": ["./**/*"] // Inclui todos os arquivos JavaScript do projeto
+}

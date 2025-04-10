@@ -1,29 +1,29 @@
 import * as cursosRepo from "./repository.js";
 
-export function listarCursos(){
-    return cursosRepo.findAll();
+export async function listarCursos(){
+    return await cursosRepo.findAll();
 }
 
-export function criarCurso(curso){
-    const cursos = cursosRepo.findAll();
+export async function criarCurso(curso){
+    const cursos = await cursosRepo.findAll();
     const cursoExiste = cursos.some(c => c.id === curso.id);
 
     if (cursoExiste){
         throw new Error("Curso já foi cadastrado");
     }
 
-    cursosRepo.create(curso);
+    await cursosRepo.create(curso);
     return curso;
 }
 
-export function visualizarCurso(id){
-    return cursosRepo.findOne(id);
+export async function visualizarCurso(id){
+    return await cursosRepo.findOne(parseInt(id));
 }
 
-export function atualizarCurso(id, cursoNovo){
-    cursosRepo.update(id, cursoNovo);
+export async function atualizarCurso(id, cursoNovo){
+    await cursosRepo.update(id, cursoNovo);
 }
 
-export function deletarCurso(id){
-    cursosRepo.destroy(id);
+export async function deletarCurso(id){
+    await cursosRepo.destroy(id);
 }

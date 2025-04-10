@@ -1,4 +1,4 @@
-import { database } from "../knexfile";
+import { database } from "../knexfile.js";
 
 export async function create(aluno){
     await database('aluno').insert({
