@@ -31,6 +31,13 @@ export async function atualizarAluno(req,res){
     res.status(204).json();
 }
 
+
+export async function atualizarCamposAluno(req,res){
+    await alunoService.atualizarCamposAluno(parseInt(req.params.id)-1,req.body);
+    res.status(204).json();
+}
+
+
 export async function deletarAluno(req,res){
     await alunoService.deletarAluno(parseInt(req.params.id)-1);
     res.status(204).json();

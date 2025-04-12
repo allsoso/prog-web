@@ -24,6 +24,14 @@ export async function atualizarCurso(id, cursoNovo){
     await cursosRepo.update(id, cursoNovo);
 }
 
+export async function atualizarCamposCurso(id, cursoNovo){
+    const {nome, descricao} = cursoNovo;
+    let curso = visualizarCurso(id);
+    cursoNovo.nome = nome ? nome : curso.nome;
+    cursoNovo.descricao = descricao ? descricao : curso.descricao;
+    await cursosRepo.update(id, cursoNovo);
+}
+
 export async function deletarCurso(id){
     await cursosRepo.destroy(id);
 }

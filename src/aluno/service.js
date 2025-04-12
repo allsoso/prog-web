@@ -30,6 +30,15 @@ export async function atualizarAluno(id, alunoNovo){
     await alunosRepo.update(id,alunoNovo);
 }
 
+export async function atualizarCamposAluno(id, alunoNovo){
+    const {nome,matricula,curso} = alunoNovo;
+    let aluno = visualizarAluno(id);
+    alunoNovo.nome = nome ? nome : aluno.nome;
+    alunoNovo.matricula = matricula ? matricula : aluno.matricula;
+    alunoNovo.curso = curso ? curso : aluno.curso;
+    await alunosRepo.update(id,alunoNovo);
+}
+
 export async function deletarAluno(id){
     await alunosRepo.destroy(id);
 }

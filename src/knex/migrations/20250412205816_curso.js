@@ -1,12 +1,10 @@
-const tableName = "aluno";
+const tableName = "curso";
 
 export async function up(knex) {
   return knex.schema.createTable(tableName, (table) => {
     table.increments('id');
     table.string('nome', 100).notNullable();
-    table.string('matricula', 100).notNullable();
-    table.integer('curso_id').unsigned().references('id').inTable('curso');
-
+    table.string('descricao', 100).notNullable();
   });
 }
 
