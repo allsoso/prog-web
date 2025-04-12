@@ -1,4 +1,4 @@
-import { database } from "../knexfile.js";
+import { database } from "../database.js";
 
 export async function create(aluno){
     await database('aluno').insert({
@@ -6,6 +6,7 @@ export async function create(aluno){
         matricula: aluno.matricula
     })
 }
+
 export async function findAll() {
     return database.select().from('aluno');
 }

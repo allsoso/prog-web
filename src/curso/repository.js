@@ -1,4 +1,4 @@
-import { database } from "../knexfile.js";
+import { database } from "../database.js";
 
 export async function create(curso) {
     await database('curso').insert({

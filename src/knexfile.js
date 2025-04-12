@@ -1,5 +1,6 @@
 // @ts-nocheck
 import Knex from 'knex';
+import 'dotenv/config';
 
 const {
   DB_HOST,
@@ -30,4 +31,5 @@ const config = {
   }
 }
 
-export const database = Knex(config[NODE_ENV || 'development']);
+
+export default config;
