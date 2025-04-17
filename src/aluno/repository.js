@@ -11,11 +11,11 @@ export async function create(aluno){
 }
 
 export async function findAll() {
-    return Aluno.findAll();
+    return await Aluno.findAll();
 }
 
 export async function findOne(id) {
-    return Aluno.findByPk(id);
+    return await Aluno.findByPk(id);
 }
 
 export async function update(id, alunoNovo) {

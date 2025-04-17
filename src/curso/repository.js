@@ -11,21 +11,19 @@ export async function create(curso) {
 }
 
 export async function findAll() {
-    console.log("estou aqui");
-    console.log(Curso.findAll());
-    return Curso.findAll();
+    return await Curso.findAll();
 }
 
 export async function findOne(id) {
-    return Curso.findByPk(id);
+    return await Curso.findByPk(id);
 }
 
 export async function update(id, cursoNovo) {
-    let curso = Curso.findByPk(id);
+    let curso = await Curso.findByPk(id);
     if(!curso){
         throw new Error("Curso não encontrado");
     }
-    await Curso.update(
+    await curso.update(
         {
             nome:cursoNovo.nome,
             descricao:cursoNovo.descricao
@@ -36,7 +34,6 @@ export async function update(id, cursoNovo) {
 
 export async function destroy(id) {
     let curso = await Curso.findByPk(id);
-    console.log(curso);
     if(!curso){
         throw new Error("Curso não encontrado");
     }
