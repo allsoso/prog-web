@@ -13,7 +13,7 @@ Aluno.init(
         nome:{
             type: DataTypes.STRING,
         },
-        metricula:{
+        matricula:{
             type:DataTypes.STRING,
         },
     },

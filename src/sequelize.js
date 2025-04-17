@@ -17,7 +17,7 @@ const config = {
       host: DB_HOST,
       port: parseInt(DB_PORT),
       database: DB_DATABASE,
-      user: DB_USER,
+      username: DB_USER,
       password: DB_PASSWORD,
       models: path.resolve("./models") 
     }
