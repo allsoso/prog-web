@@ -1,27 +1,37 @@
-import { database } from "../database.js";
+import { sequelize } from "../database.js";
+import { Aluno } from "./entity.js";
 
 export async function create(aluno){
-    await database('aluno').insert({
-        nome: aluno.nome,
-        matricula: aluno.matricula
-    })
+    await Aluno.create(
+        {
+            nome: aluno.nome,
+            matricula: aluno.matricula
+        }
+    );
 }
 
 export async function findAll() {
-    return database.select().from('aluno');
+    return Aluno.findAll();
 }
 
 export async function findOne(id) {
-    return database.select().from('aluno').where({id:id});
+    return Aluno.findByPk(id);
 }
 
 export async function update(id, alunoNovo) {
-    await database('aluno').where({id:id}).update({
-        nome: alunoNovo.nome,
+    let aluno = await Aluno.findByPk(id);
+    if(!aluno)
+        throw new Error("Aluno não existe");
+    await aluno.update({
+        nome:alunoNovo.nome,
         matricula: alunoNovo.matricula
     });
+    return aluno;
 }
 
 export async function destroy(id) {
-    return database('aluno').where({id:id}).del();
+    let aluno = await Aluno.findByPk(id);
+    if(!aluno)
+        throw new Error("Aluno não existe");
+    await aluno.destroy();
 }

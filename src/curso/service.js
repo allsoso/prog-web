@@ -6,10 +6,13 @@ export async function listarCursos(){
 
 export async function criarCurso(curso){
     const cursos = await cursosRepo.findAll();
-    const cursoExiste = cursos.some(c => c.id === curso.id);
+    if(cursos){
+        console.log(cursos);
+        const cursoExiste = cursos.some(c => c.nome == curso.nome);
 
-    if (cursoExiste){
-        throw new Error("Curso já foi cadastrado");
+        if (cursoExiste){
+            throw new Error("Curso já foi cadastrado");
+        }
     }
 
     await cursosRepo.create(curso);

@@ -1,27 +1,42 @@
-import { database } from "../database.js";
+import { sequelize } from "../database.js";
+import { Curso } from "./entity.js";
 
 export async function create(curso) {
-    await database('curso').insert({
-        nome: curso.nome,
-        descricao: curso.descricao
-    });
+    await Curso.create(
+        {
+            nome:curso.nome,
+            descricao:curso.descricao,
+        }
+    );
 }
 
 export async function findAll() {
-    return database.select().from('curso');
+    console.log("estou aqui");
+    console.log(Curso.findAll());
+    return Curso.findAll();
 }
 
 export async function findOne(id) {
-    return database.select().from('curso').where({id:id});
+    return Curso.findByPk(id);
 }
 
 export async function update(id, cursoNovo) {
-    await database('curso').where({id:id}).update({
-        nome: cursoNovo.nome,
-        descricao: cursoNovo.descricao
-    });
+    let curso = Curso.findByPk(id);
+    if(!curso){
+        throw new Error("Curso não encontrado");
+    }
+    await Curso.update(
+        {
+            nome:cursoNovo.nome,
+            descricao:cursoNovo.descricao
+        }
+    );
+    return curso;
 }
 
 export async function destroy(id) {
-    return database('curso').where({id:id}).del();
+    let curso = Curso.findByPk(id);
+    if(!curso)
+        throw new Error("Curso não encontrado");
+    Curso.destroy(id);
 }

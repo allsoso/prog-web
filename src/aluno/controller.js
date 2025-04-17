@@ -33,12 +33,20 @@ export async function atualizarAluno(req,res){
 
 
 export async function atualizarCamposAluno(req,res){
-    await alunoService.atualizarCamposAluno(parseInt(req.params.id)-1,req.body);
-    res.status(204).json();
+    try {
+        await alunoService.atualizarCamposAluno(parseInt(req.params.id)-1,req.body);
+        res.status(204).json();
+    } catch (error) {
+        res.status(404).json("Aluno não existe para ser atualizado");
+    }
 }
 
 
 export async function deletarAluno(req,res){
-    await alunoService.deletarAluno(parseInt(req.params.id)-1);
-    res.status(204).json();
+    try {
+        await alunoService.deletarAluno(parseInt(req.params.id)-1);
+        res.status(204).json();
+    } catch (error) {
+        res.status(404).json("Aluno não existe para ser deletado");
+    }
 }
