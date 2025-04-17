@@ -1,9 +1,9 @@
 // @ts-nocheck
-import config from "./knexfile.js";
-import Knex from "knex";
+import config from "./sequelize.js";
+import Sequelize from "sequelize";
 
 const {
   NODE_ENV,
 } = process.env;
 
-export const database = Knex(config[NODE_ENV || 'development']);
+export const sequelize = new Sequelize(config.development.connection);

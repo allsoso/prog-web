@@ -1,6 +1,5 @@
-// @ts-nocheck
-import Knex from 'knex';
 import 'dotenv/config';
+import path from "path";
 
 const {
   DB_HOST,
@@ -13,20 +12,14 @@ const {
 
 const config = {
   development: {
-    client: 'postgresql',
-    migrations: {
-      directory: './knex/migrations',
-      tableName: 'knex_migrations'
-    },
-    seeds: {
-      directory: './knex/seeds'
-    },
     connection: {
+      dialect: "postgres",
       host: DB_HOST,
       port: parseInt(DB_PORT),
       database: DB_DATABASE,
       user: DB_USER,
-      password: DB_PASSWORD
+      password: DB_PASSWORD,
+      models: path.resolve("./models") 
     }
   }
 }
