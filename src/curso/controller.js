@@ -6,7 +6,7 @@ export async function listarCursos(req,res){
 }
 
 export async function visualizarCurso(req,res){
-    let curso = await cursoService.visualizarCurso(parseInt(req.params.id)-1);
+    let curso = await cursoService.visualizarCurso(parseInt(req.params.id));
     if (!curso) {
         return res.status(404).json({"msg": "Curso não encontrado"});
     }
@@ -28,7 +28,7 @@ export async function criarCurso(req,res){
 
 export async function atualizarCurso(req,res){
     try{
-        await cursoService.atualizarCurso(parseInt(req.params.id)-1, req.body);
+        await cursoService.atualizarCurso(parseInt(req.params.id), req.body);
         res.status(204).json();
     }catch (error){
         res.status(404).json({"msg":"Curso não encontrado"});
@@ -36,13 +36,13 @@ export async function atualizarCurso(req,res){
 }
 
 export async function atualizarCamposCurso(req,res){
-    await cursoService.atualizarCamposCurso(parseInt(req.params.id)-1, req.body);
+    await cursoService.atualizarCamposCurso(parseInt(req.params.id), req.body);
     res.status(204).json();
 }
 
 export async function deletarCurso(req,res){
     try{
-        await cursoService.deletarCurso(parseInt(req.params.id)-1);
+        await cursoService.deletarCurso(parseInt(req.params.id));
         res.status(204).json();
     }catch(error){
         res.status(404).json({"msg":"Curso não encontrado"});

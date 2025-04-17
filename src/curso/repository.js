@@ -38,5 +38,5 @@ export async function destroy(id) {
     let curso = Curso.findByPk(id);
     if(!curso)
         throw new Error("Curso não encontrado");
-    Curso.destroy(id);
+    await Curso.destroy(id);
 }

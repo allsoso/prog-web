@@ -7,7 +7,7 @@ export async function listarAlunos(req,res){
 }
 
 export async function visualizarAluno(req,res){
-    let aluno = await alunoService.visualizarAluno(parseInt(req.params.id)-1);
+    let aluno = await alunoService.visualizarAluno(parseInt(req.params.id));
     res.status(200).json(aluno);
 }
 
@@ -27,14 +27,14 @@ export async function criarAluno(req,res){
 }
 
 export async function atualizarAluno(req,res){
-    await alunoService.atualizarAluno(parseInt(req.params.id)-1,req.body);
+    await alunoService.atualizarAluno(parseInt(req.params.id),req.body);
     res.status(204).json();
 }
 
 
 export async function atualizarCamposAluno(req,res){
     try {
-        await alunoService.atualizarCamposAluno(parseInt(req.params.id)-1,req.body);
+        await alunoService.atualizarCamposAluno(parseInt(req.params.id),req.body);
         res.status(204).json();
     } catch (error) {
         res.status(404).json("Aluno não existe para ser atualizado");
@@ -44,7 +44,7 @@ export async function atualizarCamposAluno(req,res){
 
 export async function deletarAluno(req,res){
     try {
-        await alunoService.deletarAluno(parseInt(req.params.id)-1);
+        await alunoService.deletarAluno(parseInt(req.params.id));
         res.status(204).json();
     } catch (error) {
         res.status(404).json("Aluno não existe para ser deletado");
