@@ -35,8 +35,10 @@ export async function update(id, cursoNovo) {
 }
 
 export async function destroy(id) {
-    let curso = Curso.findByPk(id);
-    if(!curso)
+    let curso = await Curso.findByPk(id);
+    console.log(curso);
+    if(!curso){
         throw new Error("Curso não encontrado");
-    await Curso.destroy(id);
+    }
+    await curso.destroy();
 }
